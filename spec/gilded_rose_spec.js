@@ -42,7 +42,7 @@ describe("Gilded Rose", function () {
     test("The quality of an item shouldn't be more than 50", function () {
       const items = [new Item('Aged Brie', 0, 49)]
       const [dexterity] = items;
-
+      update_quality(items)
       expect(dexterity.quality).toBe(50);
     });
   });
