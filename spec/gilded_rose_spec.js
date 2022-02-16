@@ -91,6 +91,13 @@ describe("Gilded Rose", function () {
       update_quality(items);
       expect(item.quality).toBe(23);
     });
+
+    it("should drop to 0 in quality when sell_in is 0", function () {
+      const items = [new Item('Backstage passes to a TAFKAL80ETC concert', 0, 20)]
+      const [item] = items;
+
+      expect(item.quality).toBe(0);
+    });
   });
 
 });
