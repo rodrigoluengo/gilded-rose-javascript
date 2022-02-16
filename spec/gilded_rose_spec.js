@@ -30,4 +30,14 @@ describe("Gilded Rose", function () {
 
   });
 
+  describe("Test Aged Brie item", function () {
+    it("should increases in quality the older it gets", function () {
+      const items = [new Item('Aged Brie', 0, 1)]
+      const [dexterity] = items;
+
+      expect(dexterity.sell_in).toBe(-1);
+      expect(dexterity.quality).toBe(3);
+    })
+  });
+
 });
