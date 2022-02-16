@@ -51,7 +51,7 @@ describe("Gilded Rose", function () {
     it("should not decrease in quality", function () {
       const items = [new Item('Sulfuras, Hand of Ragnaros', 0, 49)]
       const [item] = items;
-
+      update_quality(items)
       expect(item.quality).toBe(49);
     });
   })
