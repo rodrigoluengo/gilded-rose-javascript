@@ -6,26 +6,26 @@ describe("Gilded Rose", function () {
 
     it("should decrease 1 in sell_in and quality properties", function () {
       const items = [new Item('+5 Dexterity Vest', 10, 20)]
-      const [dexterity] = items;
+      const [item] = items;
       update_quality(items)
-      expect(dexterity.sell_in).toBe(9);
-      expect(dexterity.quality).toBe(19);
+      expect(item.sell_in).toBe(9);
+      expect(item.quality).toBe(19);
     });
 
     it("should quality degrades twice", function () {
       const items = [new Item('+5 Dexterity Vest', 0, 10)]
-      const [dexterity] = items;
+      const [item] = items;
       update_quality(items)
-      expect(dexterity.sell_in).toBe(-1);
-      expect(dexterity.quality).toBe(8);
+      expect(item.sell_in).toBe(-1);
+      expect(item.quality).toBe(8);
     })
 
     it("should quality of an item never being negative", function () {
       const items = [new Item('+5 Dexterity Vest', 0, 1)]
-      const [dexterity] = items;
+      const [item] = items;
       update_quality(items)
-      expect(dexterity.sell_in).toBe(-1);
-      expect(dexterity.quality).toBe(0);
+      expect(item.sell_in).toBe(-1);
+      expect(item.quality).toBe(0);
     })
 
   });
@@ -33,18 +33,27 @@ describe("Gilded Rose", function () {
   describe("Test Aged Brie item", function () {
     it("should increases in quality the older it gets", function () {
       const items = [new Item('Aged Brie', 0, 1)]
-      const [dexterity] = items;
+      const [item] = items;
       update_quality(items)
-      expect(dexterity.sell_in).toBe(-1);
-      expect(dexterity.quality).toBe(3);
+      expect(item.sell_in).toBe(-1);
+      expect(item.quality).toBe(3);
     })
 
     test("The quality of an item shouldn't be more than 50", function () {
       const items = [new Item('Aged Brie', 0, 49)]
-      const [dexterity] = items;
+      const [item] = items;
       update_quality(items)
-      expect(dexterity.quality).toBe(50);
+      expect(item.quality).toBe(50);
     });
   });
+
+  describe("Test Sulfuras item", function () {
+    it("should not decrease in quality", function () {
+      const items = [new Item('Sulfuras, Hand of Ragnaros', 0, 49)]
+      const [item] = items;
+
+      expect(item.quality).toBe(49);
+    });
+  })
 
 });
