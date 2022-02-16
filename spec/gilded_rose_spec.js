@@ -12,6 +12,14 @@ describe("Gilded Rose", function () {
       expect(dexterity.quality).toBe(19);
     });
 
+    it("should quality degrades twice", function () {
+      const items = [new Item('+5 Dexterity Vest', 0, 10)]
+      const [dexterity] = items;
+
+      expect(dexterity.sell_in).toBe(-1);
+      expect(dexterity.quality).toBe(8);
+    })
+
   });
 
 });
