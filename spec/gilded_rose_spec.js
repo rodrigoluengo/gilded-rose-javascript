@@ -31,7 +31,7 @@ describe("Gilded Rose", function () {
   });
 
   describe("Test Aged Brie item", function () {
-    it("should increases in quality the older it gets", function () {
+    it("should increase in quality the older it gets", function () {
       const items = [new Item('Aged Brie', 0, 1)]
       const [item] = items;
       update_quality(items)
@@ -49,9 +49,10 @@ describe("Gilded Rose", function () {
 
   describe("Test Sulfuras item", function () {
     it("should not decrease in quality", function () {
-      const items = [new Item('Sulfuras, Hand of Ragnaros', 0, 49)]
+      const items = [new Item('Sulfuras, Hand of Ragnaros', 10, 49)]
       const [item] = items;
       update_quality(items)
+      expect(item.sell_in).toBe(10);
       expect(item.quality).toBe(49);
     });
   });
@@ -104,7 +105,7 @@ describe("Gilded Rose", function () {
     it("should degrade in quality twice as fast as normal items", function () {
       const items = [new Item('Conjured Mana Cake', 3, 6)]
       const [item] = items;
-
+      update_quality(items);
       expect(item.quality).toBe(4);
     });
   })
