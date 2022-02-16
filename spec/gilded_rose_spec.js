@@ -100,4 +100,13 @@ describe("Gilded Rose", function () {
     });
   });
 
+  describe("Test Conjured item", function () {
+    it("should degrade in quality twice as fast as normal items", function () {
+      const items = [new Item('Conjured Mana Cake', 3, 6)]
+      const [item] = items;
+
+      expect(item.quality).toBe(4);
+    });
+  })
+
 });
