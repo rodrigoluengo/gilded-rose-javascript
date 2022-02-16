@@ -38,6 +38,13 @@ describe("Gilded Rose", function () {
       expect(dexterity.sell_in).toBe(-1);
       expect(dexterity.quality).toBe(3);
     })
+
+    test("The quality of an item shouldn't be more than 50", function () {
+      const items = [new Item('Aged Brie', 0, 49)]
+      const [dexterity] = items;
+
+      expect(dexterity.quality).toBe(50);
+    });
   });
 
 });
